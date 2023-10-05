@@ -1,20 +1,20 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: TTU
+// Engineer: Miguel Velasco Espinosa
 // 
 // Create Date: 04/25/2022 10:37:56 PM
-// Design Name: 
+// Design Name: Path-Following
 // Module Name: Pathing
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
+// Project Name: Path-Following
+// Target Devices: BASYS 2 BOARD
+// Tool Versions: Vivado 2022
+// Description: Using IPS sensors follow a metallic path including a 90 degree turn
 // 
-// Dependencies: 
+// 
 // 
 // Revision:
-// Revision 0.01 - File Created
+// Revision 1.4 - Final Path Module
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
