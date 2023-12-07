@@ -47,7 +47,7 @@ module FRQ(
 
 always @(posedge clock) begin
     counter <= counter + 1;
-    
+    //Fphot and Sphoto determine the frequency by counting whenever the previous Frequency changes meaning the frequency is translated into a number the FPGA can understand
     if(FPhoto != Fold)
     begin
         Fcount <= Fcount + 1;
@@ -56,10 +56,12 @@ always @(posedge clock) begin
     begin
         Scount <= Scount + 1;
     end
+    //GPhoto is from an earlier version however the code breaks when taken off some it is left (DO NOT TOUCH)
     else if(GPhoto != Gold)
     begin
         Gcount <= Gcount + 1;
     end
+    
     if(counter == countTo)
     begin
         counter <= 0;
@@ -78,6 +80,7 @@ always @(posedge clock) begin
 end
 
 always @(posedge clock) begin
+    //Since the frequency determines if its enemy or foe a 01 is a friendy and a 10 is a foe. Edge case accounted for in case different frequency is detected
     if(Fout > 10 && Fout < 40) begin
         Ffreq <= 2'b01;
         positionServo <= 8'b00010000;
