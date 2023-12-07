@@ -65,15 +65,16 @@ always @(posedge clock) begin
     if(counter == countTo)
     begin
         counter <= 0;
-        
+        //Performs right shift operation to deal with overflow (I dont know if this is what it actually does but it makes so that the readings are more consistent)
         Fout <= Fcount >> 1;
         Sout <= Scount >> 1;
         Gout <= Gcount >> 1;
-        
+        //Counts get reset to 0
         Fcount <= 0;
         Scount <= 0;
         Gcount <= 0;
     end
+    //Frequencies get set to a new "Old" frequency
     Fold = FPhoto;
     Sold = SPhoto;
     Gold = GPhoto;
@@ -81,12 +82,14 @@ end
 
 always @(posedge clock) begin
     //Since the frequency determines if its enemy or foe a 01 is a friendy and a 10 is a foe. Edge case accounted for in case different frequency is detected
+    //Frequency between 10 and 40 is a friendy while above 40 and below 110 its an enemy
     if(Fout > 10 && Fout < 40) begin
         Ffreq <= 2'b01;
         positionServo <= 8'b00010000;
     end
     else if(Fout > 40 && Fout < 110) begin
         Ffreq <= 2'b10;
+        //The servo position is used to aim the gun F is on the right side of the rover wile S is on the left. G as explained earlier does not do anything but if removed it breaks. (NEEDS UPDATE)
         positionServo <= 8'b00000001;
     end
     else begin
