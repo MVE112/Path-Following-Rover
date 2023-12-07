@@ -56,7 +56,7 @@ always @(posedge clock) begin
     begin
         Scount <= Scount + 1;
     end
-    //GPhoto is from an earlier version however the code breaks when taken off some it is left (DO NOT TOUCH)
+    //GPhoto is from an earlier version however the code breaks when taken off(DO NOT TOUCH)
     else if(GPhoto != Gold)
     begin
         Gcount <= Gcount + 1;
